@@ -64,7 +64,9 @@ const Quiz = (props) => {
         D) {props.question.answers[3]}
       </label>
 
-      <p>Selected answer is {answer}</p>
+      <p>
+        Corret answer is {props.question.answers[props.question.correctIndex]}
+      </p>
     </div>
   );
 };
