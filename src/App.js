@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Quiz from "./Quiz";
 
-function App() {
+const all_questions = require("./data.json");
+
+const App = () => {
+  const [question, setQuestion] = useState(all_questions.questions[0]);
+  const [increment, setIncrement] = useState(0);
+
+  const setNext = () => {
+    if (increment < all_questions.questions.length - 1)
+      setIncrement(increment + 1);
+    console.log(all_questions.questions[increment]);
+    return setQuestion(all_questions.questions[increment]);
+  };
+
+  const setPrev = () => {
+    if (increment > 0) setIncrement(increment - 1);
+    console.log(all_questions.questions[increment]);
+    return setQuestion(all_questions.questions[increment]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <Quiz question={question} />
+      </div>
+      <button onClick={() => setPrev()}>Previous</button>
+      <button onClick={() => setNext()}>Next</button>
+      <button>Submit</button>
     </div>
   );
-}
+};
 
 export default App;
