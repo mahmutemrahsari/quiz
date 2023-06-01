@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Quiz from "./Quiz";
+import "./App.css";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 const all_questions = require("./data.json");
 
@@ -61,18 +64,28 @@ const App = () => {
 
   return (
     <div>
+      <h1>QUIZ</h1>
       <div>
         <Quiz
           sendDataToParent={sendDataToParent}
           question={question}
           questionIndex={questionIndex}
+          totalScore={score}
         />
       </div>
-      <button onClick={setPrev}>Previous</button>
-      <button onClick={setNext}>Next</button>
-      <button onClick={setSubmit}>Submit</button>
+      <Stack spacing={2} direction="row">
+        <Button variant="outlined" onClick={setPrev}>
+          Previous
+        </Button>
+        <Button variant="outlined" onClick={setNext}>
+          Next
+        </Button>
+        <Button variant="contained" onClick={setSubmit}>
+          Submit
+        </Button>
+      </Stack>
+
       <p>{answerFromChild}</p>
-      <p>Total score: {score}</p>
     </div>
   );
 };
