@@ -62,7 +62,11 @@ const App = () => {
   return (
     <div>
       <div>
-        <Quiz sendDataToParent={sendDataToParent} question={question} />
+        <Quiz
+          sendDataToParent={sendDataToParent}
+          question={question}
+          questionIndex={questionIndex}
+        />
       </div>
       <button onClick={setPrev}>Previous</button>
       <button onClick={setNext}>Next</button>
